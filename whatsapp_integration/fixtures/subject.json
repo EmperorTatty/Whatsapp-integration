@@ -1,0 +1,51 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 17:24:12.322654",
+  "name": "Purchase Order",
+  "subject": "Purchase Order"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 17:35:49.177739",
+  "name": "Salary Slip",
+  "subject": "Salary Slip"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 17:36:16.812093",
+  "name": "Customer Welcome Message",
+  "subject": "Customer Welcome Message"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 17:36:42.599126",
+  "name": "Job Card",
+  "subject": "Job Card"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 17:37:41.830158",
+  "name": "Customer Statement",
+  "subject": "Customer Statement"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 17:39:51.391239",
+  "name": "Quotation",
+  "subject": "Quotation "
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Subject",
+  "modified": "2024-08-22 11:51:40.148705",
+  "name": "Sales Invoice",
+  "subject": "Sales Invoice"
+ }
+]

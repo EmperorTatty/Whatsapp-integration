@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sales Invoice - {{ doc.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .invoice-box {
+            width: 100%;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+        .invoice-box table tr.item td{
+            border-bottom: 1px solid #eee;
+        }
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <h2>{{ doc.company }}</h2>
+                                <p>{{ doc.company_address }}</p>
+                            </td>
+                            <td>
+                                <h2>Sales Invoice</h2>
+                                <p>Invoice #: {{ doc.name }}</p>
+                                <p>Date: {{ frappe.utils.formatdate(doc.posting_date) }}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                <h3>Bill To:</h3>
+                                <p>{{ doc.customer_name }}</p>
+                                <p>{{ doc.customer_address }}</p>
+                            </td>
+                            <td>
+                                <h3>Contact:</h3>
+                                <p>Mobile: {{ doc.contact_mobile }}</p>
+                                <p>Email: {{ doc.contact_email }}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>Description</td>
+                <td>Amount</td>
+            </tr>
+            
+            {% for item in doc.items %}
+            <tr class="item">
+                <td>{{ item.item_name }} <br> {{ item.description }}</td>
+                <td>{{ frappe.utils.fmt_money(item.amount, currency=doc.currency) }}</td>
+            </tr>
+            {% endfor %}
+            
+            <tr class="total">
+                <td></td>
+                <td>Total: {{ frappe.utils.fmt_money(doc.grand_total, currency=doc.currency) }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-14 13:07:34.030514",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "access_token",
+  "instance_id",
+  "column_break_etjk",
+  "check",
+  "webhook_url",
+  "method_url"
+ ],
+ "fields": [
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Data",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "instance_id",
+   "fieldtype": "Data",
+   "label": "Instance ID"
+  },
+  {
+   "depends_on": "eval:doc.check",
+   "fieldname": "webhook_url",
+   "fieldtype": "Data",
+   "label": "Webhook URL",
+   "mandatory_depends_on": "eval:doc.check"
+  },
+  {
+   "fieldname": "column_break_etjk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.check",
+   "fieldname": "method_url",
+   "fieldtype": "Data",
+   "label": "Method URL",
+   "mandatory_depends_on": "eval:doc.check"
+  },
+  {
+   "default": "0",
+   "fieldname": "check",
+   "fieldtype": "Check",
+   "label": "Allow Message Feedback"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-02-12 15:11:53.871575",
+ "modified_by": "Administrator",
+ "module": "Whatsapp Integration",
+ "name": "Whatsapp Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
