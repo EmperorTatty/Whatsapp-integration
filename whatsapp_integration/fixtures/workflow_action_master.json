@@ -110,5 +110,12 @@
   "modified": "2024-08-22 10:17:45.645511",
   "name": "Send",
   "workflow_action_name": "Send"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-09-10 17:51:13.322301",
+  "name": "Submit For Approval",
+  "workflow_action_name": "Submit For Approval"
  }
 ]

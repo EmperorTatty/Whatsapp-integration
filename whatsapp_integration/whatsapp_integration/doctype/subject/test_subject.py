@@ -1,4 +1,4 @@
-# Copyright (c) 2024, Upeosoft and Contributors
+# Copyright (c) 2024, Tati and Contributors
 # See license.txt
 
 # import frappe

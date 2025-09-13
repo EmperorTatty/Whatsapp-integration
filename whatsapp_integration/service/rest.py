@@ -6,14 +6,25 @@ from datetime import datetime
 import phonenumbers  
 import pycountry
 
+
 @frappe.whitelist(allow_guest=True)
 def send_whatsapp(to_number, message):
     try:
-        to_number = int(to_number)
+        # Ensure it's a string and strip spaces
+        to_number = str(to_number).strip()
         response = send_whatsapp_message(to_number, message)
         return response
-    except ValueError:
+    except Exception:
         frappe.throw("Invalid number format.")
+
+# @frappe.whitelist(allow_guest=True)
+# def send_whatsapp(to_number, message):
+#     try:
+#         to_number = int(to_number)
+#         response = send_whatsapp_message(to_number, message)
+#         return response
+#     except ValueError:
+#         frappe.throw("Invalid number format.")
 
 @frappe.whitelist(allow_guest=True)
 def send_whatsapp_message(to_number, message, country_name=None):

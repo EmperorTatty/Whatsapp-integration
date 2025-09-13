@@ -65,15 +65,6 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
-  "icon": "remove",
-  "modified": "2024-05-30 13:17:25.037907",
-  "name": "Rejected",
-  "style": "Danger",
-  "workflow_state_name": "Rejected"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
   "icon": "question-sign",
   "modified": "2024-05-30 13:17:25.033693",
   "name": "Pending",
@@ -88,15 +79,6 @@
   "name": "Cancel",
   "style": "Danger",
   "workflow_state_name": "Cancel"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-07-05 12:25:13.249740",
-  "name": "Pending Approval",
-  "style": "Warning",
-  "workflow_state_name": "Pending Approval"
  },
  {
   "docstatus": 0,
@@ -187,5 +169,32 @@
   "name": "Pending Review",
   "style": "Warning",
   "workflow_state_name": "Pending Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2025-09-10 17:50:07.513952",
+  "name": "Recording",
+  "style": "",
+  "workflow_state_name": "Recording"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2024-05-30 13:17:25.037907",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-07-05 12:25:13.249740",
+  "name": "Pending Approval",
+  "style": "Warning",
+  "workflow_state_name": "Pending Approval"
  }
 ]

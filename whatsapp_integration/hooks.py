@@ -1,8 +1,8 @@
 app_name = "whatsapp_integration"
 app_title = "Whatsapp Integration"
-app_publisher = "Upeosoft"
+app_publisher = "Tati"
 app_description = "whatsapp integration application"
-app_email = "farthy@upeosoft.com"
+app_email = "abedtati1@gmail.com.com"
 app_license = "mit"
 # required_apps = []
 

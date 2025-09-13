@@ -1,7 +1,7 @@
 [project]
 name = "whatsapp_integration"
 authors = [
-    { name = "Upeosoft", email = "farthy@upeosoft.com"}
+    { name = "Tati", email = "abedtati1@gmail.com.com"}
 ]
 description = "whatsapp integration application"
 requires-python = ">=3.10"
