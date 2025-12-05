@@ -38,38 +38,80 @@ def send_whatsapp_message(to_number, message, country_name=None):
         "Accept": "application/json"
     }
 
+    # ----------- PHONE NUMBER FORMATTING ----------
     if country_name:
         country_code = get_country_code_from_country_name(country_name)
-
         if country_code:
             to_number = format_phone_number(to_number, country_code).replace("+", "")
         else:
-            frappe.log_error(message=f"Failed to get country code for {country_name}", title="Country Code Error")
+            frappe.log_error(
+                message=f"Failed to get country code for {country_name}",
+                title="Country Code Error"
+            )
             return {"error": f"Invalid country name: {country_name}"}
     else:
         to_number = "254" + to_number[-9:]
 
+    # ------------ API PAYLOAD -----------
     data = {
-        'number': to_number,
-        'type': 'text',
-        'message': message,
-        'instance_id': INSTANCE_ID,
-        'access_token': ACCESS_TOKEN
+        "number": to_number,
+        "type": "text",
+        "message": message,
+        "instance_id": INSTANCE_ID,
+        "access_token": ACCESS_TOKEN,
     }
 
     try:
         response = requests.post(API_URL, json=data, headers=headers)
         response.raise_for_status()
-        return response.json()
+
+        # Convert response to JSON
+        resp_json = response.json()
+
+        # Log minimized response
+        resp_str = str(resp_json)
+        truncated = (resp_str[:137] + "...") if len(resp_str) > 140 else resp_str
+        frappe.log_error(truncated, "WhatsApp Text API Response")
+
+        # ------------ Extract status + id from response ------------
+        status = resp_json.get("status")
+        message_data = resp_json.get("message")  # expect dict
+
+        if isinstance(message_data, dict):
+            key_id = message_data.get("key", {}).get("id")
+        else:
+            frappe.log_error(
+                f"Unexpected message format: {message_data}",
+                "WhatsApp Text API Error"
+            )
+            return {"error": "Unexpected message response format"}
+
+        # ------------ Insert into Whatsapp Feedback ------------
+        try:
+            current_date = nowdate()
+            whatsapp_status_doc = frappe.get_doc({
+                "doctype": "Whatsapp Feedback",
+                "phone_number": to_number,
+                "status": status,
+                "key_id": key_id,
+                "date": current_date,
+            })
+            whatsapp_status_doc.insert(ignore_permissions=True)
+            frappe.db.commit()
+        except Exception as e:
+            frappe.log_error(
+                f"Error inserting WhatsApp Feedback: {str(e)}",
+                "WhatsApp Text API Error"
+            )
+            return {"error": "Failed to insert WhatsApp Feedback"}
+
+        return resp_json
+
     except requests.exceptions.RequestException as e:
         frappe.log_error(message=str(e), title="WhatsApp API Request Error")
         return {"error": str(e)}
+
     
-
-
-
-
-
 
 
 
