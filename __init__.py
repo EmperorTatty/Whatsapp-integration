@@ -1,1 +1,1 @@
-__version__ = "0.0.1"
+# Root package marker for whatsapp_integration
